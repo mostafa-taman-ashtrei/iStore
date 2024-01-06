@@ -40,6 +40,7 @@ const StoreSetupModal: React.FC = () => {
             toast({
                 title: "Failed to create store",
                 description: "Your store was NOT created, please try again later.",
+                variant: "destructive"
             });
         } finally {
             setLoading(false);
