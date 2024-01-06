@@ -2,12 +2,15 @@
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
+import { LucideIcon } from "lucide-react";
+
 interface ModalProps {
     title: string;
     description: string;
     isOpen: boolean;
     onClose: () => void;
     children?: React.ReactNode;
+    Icon: LucideIcon;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -15,6 +18,7 @@ const Modal: React.FC<ModalProps> = ({
     description,
     isOpen,
     onClose,
+    Icon,
     children
 }) => {
     const onChange = (open: boolean) => {
@@ -25,7 +29,10 @@ const Modal: React.FC<ModalProps> = ({
         <Dialog open={isOpen} onOpenChange={onChange}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>{title}</DialogTitle>
+                    <DialogTitle className="flex flex-row items-center justify-start gap-1">
+                        {Icon && <Icon className="text-sky-600" />}
+                        {title}
+                    </DialogTitle>
                     <DialogDescription>
                         {description}
                     </DialogDescription>

@@ -3,13 +3,16 @@
 import * as z from "zod";
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Loader, PlusCircle, Wand2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Modal from "@/components/general/Modal";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useStoreModal } from "@/hooks/useStoreModal";
+import { useToast } from "../ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
@@ -18,7 +21,8 @@ const formSchema = z.object({
 
 const StoreSetupModal: React.FC = () => {
     const storeModal = useStoreModal();
-    const [loading] = useState(false);
+    const { toast } = useToast();
+    const [loading, setLoading] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -27,18 +31,34 @@ const StoreSetupModal: React.FC = () => {
         },
     });
 
+    const handleFromSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            setLoading(true);
+            const response = await axios.post("/api/stores", values);
+            window.location.assign(`/${response.data.id}`);
+        } catch (error) {
+            toast({
+                title: "Failed to create store",
+                description: "Your store was NOT created, please try again later.",
+            });
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <Modal
-            title="Create a store"
+            title="New store"
             description="Create a new store in just a few clicks to get started."
             isOpen={storeModal.isOpen}
             onClose={storeModal.onClose}
+            Icon={PlusCircle}
         >
             <div>
-                <div className="space-y-4 py-2 pb-4">
+                <div className="space-y-2 py-2 pb-4">
                     <div className="space-y-2">
                         <Form {...form}>
-                            <form onSubmit={form.handleSubmit(() => { })}>
+                            <form onSubmit={form.handleSubmit(handleFromSubmit)}>
                                 <FormField
                                     control={form.control}
                                     name="name"
@@ -53,11 +73,21 @@ const StoreSetupModal: React.FC = () => {
                                     )}
                                 />
 
-                                <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                                    <Button disabled={loading} variant="outline" onClick={storeModal.onClose}>
-                                        Cancel
+                                <div className="pt-2 flex items-center justify-end w-full">
+                                    <Button disabled={loading} type="submit" className="w-full" variant="secondary">
+                                        {
+                                            loading
+                                                ? <div className="flex flex-row gap-1 items-center justify-center">
+                                                    <Loader className="animate-spin text-sky-600" />
+                                                    <p className="animate-pulse">Creating Your Store</p>
+                                                </div>
+
+                                                : <div className="flex flex-row gap-1 items-center justify-center">
+                                                    <Wand2 className="text-sky-600 w-5 h-5" />
+                                                    <p>Create</p>
+                                                </div>
+                                        }
                                     </Button>
-                                    <Button disabled={loading} type="submit">Continue</Button>
                                 </div>
                             </form>
                         </Form>
