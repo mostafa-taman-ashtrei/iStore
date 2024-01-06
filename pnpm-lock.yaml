@@ -38,6 +38,9 @@ dependencies:
   '@radix-ui/react-toast':
     specifier: ^1.1.5
     version: 1.1.5(@types/react-dom@18.2.18)(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-table':
+    specifier: ^8.11.3
+    version: 8.11.3(react-dom@18.2.0)(react@18.2.0)
   axios:
     specifier: ^1.6.5
     version: 1.6.5
@@ -50,12 +53,18 @@ dependencies:
   cmdk:
     specifier: ^0.2.0
     version: 0.2.0(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+  date-fns:
+    specifier: ^3.1.0
+    version: 3.1.0
   lucide-react:
     specifier: ^0.305.0
     version: 0.305.0(react@18.2.0)
   next:
     specifier: 14.0.4
     version: 14.0.4(react-dom@18.2.0)(react@18.2.0)
+  next-cloudinary:
+    specifier: ^5.18.0
+    version: 5.18.0(next@14.0.4)(react@18.2.0)
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
@@ -270,6 +279,29 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       csstype: 3.1.1
+    dev: false
+
+  /@cloudinary-util/url-loader@3.23.0:
+    resolution: {integrity: sha512-Tp6TrAkOYkgT3CyIU4nXS4utLkYN9nquTQSNW6Qqmb7vA7Y1MaSRty+F2FHV84WETK9XQDCfdCn4B+SyH4sWWw==}
+    dependencies:
+      '@cloudinary-util/util': 2.3.0
+      '@cloudinary/url-gen': 1.14.0
+    dev: false
+
+  /@cloudinary-util/util@2.3.0:
+    resolution: {integrity: sha512-0Gojd+ZRQjJQmlBEAa8Ua94amvx7uWHoUzVUEGi1S8bgF1wPcMqG07cSUGQfRwHsFQ/9XOesx76Df622E+CevA==}
+    dev: false
+
+  /@cloudinary/transformation-builder-sdk@1.10.0:
+    resolution: {integrity: sha512-T8evZcLOgvcrBS6bVLseZPGL/BXLReRn+DbbBnKj7yTuJ9ppZ+8EFXpZn7c0Bb2hZz6C/0mC4B5fxKfgTPzDsw==}
+    dependencies:
+      '@cloudinary/url-gen': 1.14.0
+    dev: false
+
+  /@cloudinary/url-gen@1.14.0:
+    resolution: {integrity: sha512-XbG8QgD5fkTUO/YYUWftfz3sUpKzRZJkXhp6xLSxmK/36iyMy2wA4SF5FLCOnv6fLLUneQzXbc4OAwaDM0EWCQ==}
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.10.0
     dev: false
 
   /@commitlint/cli@18.4.4(@types/node@20.10.6)(typescript@5.3.3):
@@ -1572,6 +1604,23 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@tanstack/react-table@8.11.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Gwwm7po1MaObBguw69L+UiACkaj+eOtThQEArj/3fmUwMPiWaJcXvNG2X5Te5z2hg0HMx8h0T0Q7p5YmQlTUfw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.11.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/table-core@8.11.3:
+    resolution: {integrity: sha512-nkcFIL696wTf1QMvhGR7dEg60OIRwEZm1OqFTYYDTRc4JOWspgrsJO3IennsOJ7ptumHWLDjV8e5BjPkZcSZAQ==}
+    engines: {node: '>=12'}
+    dev: false
+
   /@types/body-parser@1.19.5:
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
     dependencies:
@@ -2405,6 +2454,10 @@ packages:
     resolution: {integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==}
     engines: {node: '>=8'}
     dev: true
+
+  /date-fns@3.1.0:
+    resolution: {integrity: sha512-ZO7yefXV/wCWzd3I9haCHmfzlfA3i1a2HHO7ZXjtJrRjXt8FULKJ2Vl8wji3XYF4dQ0ZJ/tokXDZeYlFvgms9Q==}
+    dev: false
 
   /debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -3987,6 +4040,18 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /next-cloudinary@5.18.0(next@14.0.4)(react@18.2.0):
+    resolution: {integrity: sha512-QzqjyNs+ji+XCbkDQ+vfOoG37mgNI0gXnI8dPgKPnORIVOfZIjfIRh2hFDL3paEX2ph0CHj4mc4Pu2pSIDTkcw==}
+    peerDependencies:
+      next: ^12 || ^13 || ^14
+      react: ^17 || ^18
+    dependencies:
+      '@cloudinary-util/url-loader': 3.23.0
+      '@cloudinary-util/util': 2.3.0
+      next: 14.0.4(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+    dev: false
 
   /next-themes@0.2.1(next@14.0.4)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
