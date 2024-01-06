@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body
+:root {
+  height: 100%;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -73,4 +79,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.gradient-primary {
+  --tw-gradient-stops: theme("colors.indigo.500"), theme("colors.purple.500"), theme("colors.pink.500");
 }
