@@ -1,7 +1,6 @@
 import "./globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
-import DashboardNavbar from "@/components/nav/DashboardNavbar";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import ModalProvider from "@/providers/ModalProvider";
@@ -25,7 +24,6 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       <html lang="en">
         <body className={inter.className}>
           <NextThemeProvider>
-            <DashboardNavbar />
             <ModalProvider />
             <Toaster />
             {children}
