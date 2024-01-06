@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import DashboardNavbar from "@/components/nav/DashboardNavbar";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import ModalProvider from "@/providers/ModalProvider";
 import NextThemeProvider from "@/providers/NextThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,6 +25,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
         <body className={inter.className}>
           <NextThemeProvider>
             <DashboardNavbar />
+            <ModalProvider />
             {children}
           </NextThemeProvider>
         </body>

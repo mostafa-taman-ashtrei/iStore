@@ -1,12 +1,17 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { useEffect } from "react";
+import { useStoreModal } from "@/hooks/useStoreModal";
 
 const HomePage: React.FC = () => {
-  return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <h1>Welcome to iStore</h1>
-      <Button>Get Started</Button>
-    </div>
-  );
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
+
+  useEffect(() => {
+    if (!isOpen) onOpen();
+  }, [isOpen, onOpen]);
+
+  return null;
 };
 
 export default HomePage;
