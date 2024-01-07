@@ -1,3 +1,4 @@
+import PageContainer from "@/components/dashboard/PageContainer";
 import { SettingsForm } from "./components/SettingsForm";
 import { auth } from "@clerk/nextjs";
 import prismaDB from "@/lib/prisma";
@@ -21,9 +22,9 @@ const SettingsPage: React.FC<SettingsPageProps> = async ({ params }) => {
 
 
     return (
-        <div className="flex-1 space-y-4 px-4 lg:px-60 items-center justify-center pt-6">
+        <PageContainer>
             <SettingsForm initialData={store} />
-        </div>
+        </PageContainer>
     );
 };
 

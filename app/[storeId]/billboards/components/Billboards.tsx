@@ -1,6 +1,6 @@
 "use client";
 
-import { BillboardColumn, columns } from "./Columns";
+import { BillboardColumn, columns } from "./BillboardColumns";
 import { useParams, useRouter } from "next/navigation";
 
 import ApiList from "@/components/dashboard/ApiList";
@@ -10,11 +10,11 @@ import Heading from "@/components/general/Heading";
 import { PlusCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
-interface BillboardClientProps {
+interface BillboardsProps {
     data: BillboardColumn[];
 }
 
-const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
+const Billboards: React.FC<BillboardsProps> = ({ data }) => {
     const params = useParams();
     const router = useRouter();
 
@@ -41,4 +41,4 @@ const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
     );
 };
 
-export default BillboardClient;
+export default Billboards;

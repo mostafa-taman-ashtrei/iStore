@@ -27,11 +27,11 @@ const AlertModal: React.FC<AlertModalProps> = ({ isOpen, onClose, onConfirm, loa
     return (
         <Modal
             title="Are you sure?"
-            description="Choose carefully ... this action can NOT be undone."
+            description="Think carefully ... this action can NOT be undone."
             isOpen={isOpen}
             onClose={onClose}
             Icon={AlertCircle}
-            IconColor="red-600"
+            IconColor="text-red-600"
         >
             <div className="pt-6 space-x-2 flex items-center justify-center w-full">
                 <Button disabled={loading} variant="destructive" onClick={onConfirm} className="w-full">

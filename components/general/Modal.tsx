@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="flex flex-row items-center justify-start gap-1">
-                        {Icon && <Icon className={cn(IconColor ? `text-${IconColor}` : "text-sky-600")} />}
+                        {Icon && <Icon className={cn(IconColor ? IconColor : "text-sky-600")} />}
                         {title}
                     </DialogTitle>
                     <DialogDescription>

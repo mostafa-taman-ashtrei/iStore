@@ -1,5 +1,6 @@
-import BillboardClient from "./components/BillboardClient";
-import { BillboardColumn } from "./components/Columns";
+import { BillboardColumn } from "./components/BillboardColumns";
+import Billboards from "./components/Billboards";
+import PageContainer from "@/components/dashboard/PageContainer";
 import { format } from "date-fns";
 import prismaDB from "@/lib/prisma";
 
@@ -20,11 +21,9 @@ const BillboardsPage: React.FC<BillboardsPageProps> = async ({ params }) => {
     }));
 
     return (
-        <div className="flex-col mb-5">
-            <div className="flex-1 space-y-4 px-4 lg:px-60 pt-6">
-                <BillboardClient data={formattedBillboards} />
-            </div>
-        </div>
+        <PageContainer>
+            <Billboards data={formattedBillboards} />
+        </PageContainer>
     );
 };
 

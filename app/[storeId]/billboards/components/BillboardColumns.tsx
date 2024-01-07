@@ -1,6 +1,6 @@
 "use client";
 
-import CellAction from "./CellAction";
+import CellAction from "./BillboardCellAction";
 import { ColumnDef } from "@tanstack/react-table";
 
 export type BillboardColumn = {
