@@ -14,9 +14,10 @@ interface ImageUploadProps {
     // eslint-disable-next-line no-unused-vars
     onRemove: (value: string) => void;
     value: string[];
+    multipleUpload: boolean;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove, value }) => {
+const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove, value, multipleUpload }) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => { setIsMounted(true); }, []);
@@ -48,7 +49,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove,
                 ))}
             </div>
 
-            <CldUploadWidget onUpload={onUpload} uploadPreset="nein4kdt" options={{ multiple: false, maxFiles: 1 }}>
+            <CldUploadWidget
+                onUpload={onUpload}
+                uploadPreset="nein4kdt"
+                options={{ multiple: multipleUpload, maxFiles: multipleUpload ? 3 : 1 }}
+            >
                 {({ open }) => {
                     const onClick = () => open();
 
