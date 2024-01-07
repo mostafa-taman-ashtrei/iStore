@@ -114,6 +114,7 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
             variant="destructive"
             size="sm"
             onClick={() => setOpen(true)}
+            className="rounded-full"
           >
             <Trash className="h-4 w-4" />
           </Button>

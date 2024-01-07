@@ -49,7 +49,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit billboard" : "Create billboard";
+  const title = initialData ? "Edit billboard" : "Add a new billboard";
   const description = initialData
     ? "Edit your billboard to your liking."
     : "Create a new billboard";
