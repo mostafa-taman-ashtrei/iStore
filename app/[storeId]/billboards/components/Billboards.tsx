@@ -23,7 +23,7 @@ const Billboards: React.FC<BillboardsProps> = ({ data }) => {
             <div className="flex items-center justify-between">
                 <Heading title={`Billboards (${data.length})`} description="Manage billboards for your store" />
 
-                <Button onClick={() => router.push(`/${params.storeId}/billboards/new`)} variant="secondary">
+                <Button onClick={() => router.push(`/${params.storeId}/billboards/new`)} variant="secondary" className="w-1/2">
                     <PlusCircle className="mr-2 h-4 w-4 text-sky-600" /> New BillBoard
                 </Button>
             </div>

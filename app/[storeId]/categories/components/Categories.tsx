@@ -23,7 +23,7 @@ const Categories: React.FC<CategoriesClientProps> = ({ data }) => {
             <div className="flex items-center justify-between">
                 <Heading title={`Categories (${data.length})`} description="Manage categories for your store" />
 
-                <Button onClick={() => router.push(`/${params.storeId}/categories/new`)} variant="secondary">
+                <Button onClick={() => router.push(`/${params.storeId}/categories/new`)} variant="secondary" className="w-1/2">
                     <PlusCircle className="mr-2 h-4 w-4 text-sky-600" /> New Category
                 </Button>
             </div>

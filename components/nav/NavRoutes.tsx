@@ -64,7 +64,7 @@ const NavRoutes: React.FC<React.HTMLAttributes<HTMLElement>> = ({ className, ...
                         href={route.href}
                         className={cn(
                             "text-sm font-medium transition-colors hover:text-primary",
-                            route.active ? "bg-gradient-to-br gradient-primary inline-block text-transparent bg-clip-text" : "text-muted-foreground"
+                            route.active ? "text-sky-500" : "text-muted-foreground"
                         )}
                     >
                         {route.label}

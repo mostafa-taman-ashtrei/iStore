@@ -55,6 +55,7 @@ export function DataTable<TData, TValue>({
                     className="w-full"
                 />
             </div>
+
             <div className="rounded-md border">
                 <Table>
                     <TableHeader>

@@ -3,6 +3,7 @@
 import { Menu, XIcon } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
 
+import HoverLink from "../general/HoverLink";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -74,19 +75,20 @@ const MobileNav: React.FC = () => {
 
             {isOpen && (
                 <div className="fixed inset-0 z-0 w-full animate-in fade-in-20 slide-in-from-top-5">
-                    <div className="absolute grid w-full gap-3 bg-white px-10 pb-8 pt-20 shadow-xl dark:bg-black">
+                    <div className="absolute bg-opacity-100 grid w-full gap-3 bg-white px-10 pb-8 pt-20 shadow-xl dark:bg-black">
 
                         {routes.map((route) => (
-                            <Link
-                                key={route.href}
-                                href={route.href}
-                                className={cn(
-                                    "text-sm font-medium transition-colors hover:text-primary",
-                                    route.active ? "text-black dark:text-white" : "text-muted-foreground"
-                                )}
-                            >
-                                {route.label}
-                            </Link>
+                            <HoverLink key={route.href}>
+                                <Link
+                                    href={route.href}
+                                    className={cn(
+                                        "text-sm font-medium transition-colors hover:text-primary",
+                                        route.active ? "text-black dark:text-white" : "text-muted-foreground"
+                                    )}
+                                >
+                                    {route.label}
+                                </Link>
+                            </HoverLink>
                         ))}
                     </div>
                 </div>

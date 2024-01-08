@@ -22,7 +22,7 @@ const Colors: React.FC<ColorClientProps> = ({ data }) => {
         <>
             <div className="flex items-center justify-between">
                 <Heading title={`Colors (${data.length})`} description="Manage colors for your products" />
-                <Button onClick={() => router.push(`/${params.storeId}/colors/new`)} variant="secondary">
+                <Button onClick={() => router.push(`/${params.storeId}/colors/new`)} variant="secondary" className="w-1/2">
                     <PlusCircle className="mr-2 h-4 w-4 text-sky-600" /> New Color
                 </Button>
             </div>

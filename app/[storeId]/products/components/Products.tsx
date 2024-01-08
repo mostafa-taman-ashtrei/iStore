@@ -23,7 +23,7 @@ const Products: React.FC<ProductsProps> = ({ data }) => {
             <div className="flex items-center justify-between">
                 <Heading title={`Products (${data.length})`} description="Manage products for your store" />
 
-                <Button onClick={() => router.push(`/${params.storeId}/products/new`)} variant="secondary">
+                <Button onClick={() => router.push(`/${params.storeId}/products/new`)} variant="secondary" className="w-1/2">
                     <PlusCircle className="mr-2 h-4 w-4 text-sky-600" /> New Product
                 </Button>
             </div>

@@ -58,7 +58,7 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
                 <Button
-                    variant="outline"
+                    variant="secondary"
                     size="sm"
                     role="combobox"
                     aria-expanded={open}

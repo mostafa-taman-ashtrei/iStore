@@ -1,11 +1,76 @@
-interface StoreDashboardPageProps {
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CreditCard, DollarSign, Package } from "lucide-react";
+
+import Heading from "@/components/general/Heading";
+import OverviewChart from "@/components/dashboard/OverviewChart";
+import PageContainer from "@/components/dashboard/PageContainer";
+import { Separator } from "@/components/ui/separator";
+import { formatter } from "@/lib/utils";
+import { getRevenueGraph } from "@/actions/getRevenueGraph";
+import { getSalesCount } from "@/actions/getSalesCount";
+import { getStockCount } from "@/actions/getStockCount";
+import { getTotalRevenue } from "@/actions/getTotalRevenue";
+
+interface DashboardPageProps {
   params: {
     storeId: string;
   };
 }
 
-const StoreDashboardPage: React.FC<StoreDashboardPageProps> = ({ params }) => {
-  return <h1>Welcome to {params.storeId} dashboard.</h1>;
+const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
+  const totalRevenue = await getTotalRevenue(params.storeId);
+  const graphRevenue = await getRevenueGraph(params.storeId);
+  const salesCount = await getSalesCount(params.storeId);
+  const stockCount = await getStockCount(params.storeId);
+
+  return (
+    <PageContainer>
+      <Heading title="Dashboard" description="All your store data is at the tip of your hands." />
+
+      <Separator />
+
+      <div className="grid gap-4 grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Total Revenue
+            </CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatter.format(totalRevenue)}</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Sales</CardTitle>
+            <CreditCard className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">+{salesCount}</div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Products In Stock</CardTitle>
+            <Package className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stockCount}</div>
+          </CardContent>
+        </Card>
+      </div>
+      <Card className="col-span-4">
+        <CardHeader>
+          <CardTitle>Overview</CardTitle>
+        </CardHeader>
+
+        <CardContent className="pl-2">
+          <OverviewChart data={graphRevenue} />
+        </CardContent>
+      </Card>
+    </PageContainer>
+  );
 };
 
-export default StoreDashboardPage;
+export default DashboardPage;
