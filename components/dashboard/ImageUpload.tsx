@@ -52,7 +52,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove,
             <CldUploadWidget
                 onUpload={onUpload}
                 uploadPreset="nein4kdt"
-                options={{ multiple: multipleUpload, maxFiles: multipleUpload ? 3 : 1 }}
+                options={{ multiple: multipleUpload, maxFiles: multipleUpload ? 2 : 1 }}
             >
                 {({ open }) => {
                     const onClick = () => open();
