@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { CheckCircle2, ChevronsUpDown, PlusCircle, Store } from "lucide-react";
 import {
     Command,
@@ -21,6 +19,7 @@ import { useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 import { useStoreModal } from "@/hooks/useStoreModal";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
@@ -35,6 +34,8 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
     const params = useParams();
     const router = useRouter();
 
+    const [open, setOpen] = useState(false);
+
     const formattedItems = items.map((item) => ({
         label: item.name,
         value: item.id
@@ -42,7 +43,6 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
 
     const currentStore = formattedItems.find((item) => item.value === params.storeId);
 
-    const [open, setOpen] = React.useState(false);
 
     const handleStoreSelect = (store: { value: string, label: string }) => {
         setOpen(false);
@@ -66,7 +66,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
                     className={cn("w-[200px] justify-between mx-1", className)}
                 >
                     <Store className="mr-2 h-4 w-4 text-sky-600" />
-                    {currentStore?.label}
+                    {currentStore?.label || "Select A Store"}
                     <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>

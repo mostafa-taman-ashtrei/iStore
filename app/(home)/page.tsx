@@ -1,17 +1,19 @@
-"use client";
+import NoStores from "./components/NoStores";
+import UserStores from "./components/UserStores";
+import { auth } from "@clerk/nextjs";
+import prismaDB from "@/lib/prisma";
+import { redirect } from "next/navigation";
 
-import { useEffect } from "react";
-import { useStoreModal } from "@/hooks/useStoreModal";
+const HomePage: React.FC = async () => {
+  const { userId } = auth();
+  if (!userId) redirect("/sign-in");
 
-const HomePage: React.FC = () => {
-  const onOpen = useStoreModal((state) => state.onOpen);
-  const isOpen = useStoreModal((state) => state.isOpen);
+  const stores = await prismaDB.store.findMany({
+    where: { userId }
+  });
 
-  useEffect(() => {
-    if (!isOpen) onOpen();
-  }, [isOpen, onOpen]);
-
-  return null;
+  if (!stores || stores.length === 0) return <NoStores />;
+  return <UserStores stores={stores} />;
 };
 
 export default HomePage;
