@@ -159,6 +159,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
                     multipleUpload={false}
                     onChange={(url) => field.onChange(url)}
                     onRemove={() => field.onChange("")}
+                    buttonText="Upload Billboard Image"
                   />
                 </FormControl>
               </FormItem>

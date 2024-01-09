@@ -162,6 +162,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, categories, size
                                         value={field.value.map((image) => image.url)}
                                         disabled={loading}
                                         multipleUpload
+                                        buttonText="Upload Product Image(s)"
                                         onChange={(url) => field.onChange([...field.value, { url }])}
                                         onRemove={(url) => field.onChange([...field.value.filter((current) => current.url !== url)])}
                                     />

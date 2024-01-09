@@ -1,6 +1,6 @@
 "use client";
 
-import { ImagePlus, Trash } from "lucide-react";
+import { Trash, UploadCloud } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -15,9 +15,10 @@ interface ImageUploadProps {
     onRemove: (value: string) => void;
     value: string[];
     multipleUpload: boolean;
+    buttonText: string;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove, value, multipleUpload }) => {
+const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove, value, multipleUpload, buttonText }) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => { setIsMounted(true); }, []);
@@ -65,8 +66,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove,
                             className="w-full"
                             onClick={onClick}
                         >
-                            <ImagePlus className="h-4 w-4 mr-2" />
-                            Upload Billboard Image
+                            <UploadCloud className="h-6 w-6 mr-2" />
+                            {buttonText}
                         </Button>
                     );
                 }}
